@@ -1,11 +1,12 @@
 from dateutil.parser import parse as date_parser
 from dateutil import rrule
 
+order_key = 'ORDER'
 visit_key = 'SITE_VISIT'
 customer_key = 'CUSTOMER'
-order_key = 'ORDER'
 date_key = 'event_time'
 total_amount_key = 'total_amount'
+
 
 def count_weeks(start, end):
     weeks = rrule.rrule(rrule.WEEKLY, dtstart=start, until=end)
@@ -159,7 +160,7 @@ if __name__ == '__main__':
     customer_info = {}
     print_info = True
     file_to_data("../input/input.txt", customer_info)
-    top_LTVs = topXSimpleLTVCustomers_old(10, customer_info, print_info)
+    top_LTVs = topXSimpleLTVCustomers(10, customer_info, print_info)
     output_file = "../output/output.txt"
     write_output(output_file, top_LTVs)
     print "\nData saved in: {}".format(output_file)
